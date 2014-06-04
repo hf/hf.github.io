@@ -18,8 +18,8 @@
   <meta name="twitter:creator" content="{{ site.author.twitter }}">
 
   {% if page.image == nil %}
-  <meta property="og:image" content="/assets/img/twitter-summary-card.png">
-  <meta name="twitter:image" content="/assets/img/twitter-summary-card.png">
+  <meta property="og:image" content="{{ site.url }}/assets/img/twitter-summary-card.png">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/twitter-summary-card.png">
   {% else %}
   <meta property="og:image" content="{{ page.image }}">
   <meta name="twitter:image" content="{{ page.image }}">

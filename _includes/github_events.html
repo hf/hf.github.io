@@ -1,0 +1,59 @@
+<script type="text/javascript">
+  window.githubEvents = function githubEvents(events) {
+    var event = null;
+
+    if (events && !events.localTime) {
+      events.localTime = Date.now();
+
+      localStorage.setItem("github-events", JSON.stringify(events));
+    }
+
+    for (var i = 0; i < events.data.length; i++) {
+      event = events.data[i];
+
+      if (event.type === "PushEvent") {
+        var push = event.payload
+          , repo = event.repo
+          , commit = push.commits[0];
+
+        if (commit) {
+          $("#commit").css({ display: 'inherit', opacity: '1' });
+
+          $("#latest").removeClass("verbose");
+
+          var $commitProject = $("#commit .project")
+            , $commitMessage = $("#commit .commit");
+
+          $commitProject.html('<a href="https://github.com/' + repo.name + '" target="_blank" title="' + repo.name + '">' + repo.name + '</a>');
+          $commitMessage.html(commit.message);
+        }
+
+        break;
+      }
+    };
+  };
+
+  if (typeof(Storage) !== 'undefined') {
+    var ghe = localStorage.getItem("github-events")
+      , loadGHE = function() {
+        $.ajax({
+          jsonp: 'githubEvents',
+          url: 'https://api.github.com/users/hf/events/public?callback=githubEvents',
+          async: true
+        });
+      };
+
+    if (ghe) {
+      ghe = JSON.parse(ghe);
+
+      if (!ghe || (Date.now() - 60000) > ghe.localTime) {
+        localStorage.removeItem("github-events");
+        loadGHE();
+      } else {
+        githubEvents(ghe, true);
+      }
+    } else {
+      loadGHE();
+    }
+  }
+</script>

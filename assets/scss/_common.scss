@@ -1,0 +1,86 @@
+$base-em: 20px;
+$small-em: 0.8em;
+
+$width: 540px;
+$sub-width: 500px;
+
+@import "normalize";
+@import "bourbon/bourbon";
+
+@mixin regular-text {
+  font-family: "ClearSans Light", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+
+@mixin strong-text {
+  font-family: "ClearSans Medium", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1em;
+}
+
+@mixin monospaced-text {
+  font-family: "Inconsolata", "Consolas", "Menlo", "Monaco", monospace;
+  line-height: 1.3em;
+}
+
+#content {
+  margin: 1em 0;
+}
+
+.verbose {
+  display: none;
+}
+
+html {
+  @include regular-text;
+  font-size: $base-em;
+  @include font-feature-settings("liga");
+}
+
+body {
+  width: $width;
+  margin: 0 auto;
+
+  opacity: 0;
+  @include transition(opacity 0.3s ease-in-out);
+}
+
+html.wf-active body {
+  opacity: 1;
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+  @include strong-text;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 1em 0;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 1em;
+}
+
+a {
+  @include transition(color 0.3s ease-in-out);
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+}
+
+code {
+  @include monospaced-text;
+}
+
+section {
+  margin: 1em auto;
+}

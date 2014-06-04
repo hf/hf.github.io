@@ -1,0 +1,19 @@
+---
+layout: i
+og_type: article
+---
+<article id="post">
+  <header>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <div class="meta">
+    <p class="date">
+      <span class="verbose">Published on: </span><time datetime="{{ page.date | date_to_xml_schema }}">{{ page.date | date_to_string }}</time>
+    </p>
+  </div>
+</article>

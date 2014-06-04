@@ -1,134 +1,118 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Stojan Dimitrovski</title>
+---
+layout: default
+title: Stojan Dimitrovski
+og_type: website
+description: Stojan Dimitrovski is a software developer and designer from Macedonia.
+---
 
-    <style>
-      html {
-        background: #0d0d0d;
-      }
+<section id="about">
+  <header class="verbose">
+    <h1>About Me</h1>
+  </header>
 
-      #sd {
-        display: block;
-        margin: 200px auto 0 auto;
-        width: 266px;
-        height: 266px;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease-in;
-        -webkit-transition: opacity 0.3s ease-in;
-        -moz-transition: opacity 0.3s ease-in;
-        -o-transition: opacity 0.3s ease-in;
-      }
-    </style>
+  <p>I’m a software developer &amp; designer from Macedonia.</p>
+</section>
 
-    <script type="text/javascript">
-      window.sd = null;
+{% capture has_post %}{% for post in site.posts limit:1 %}true{% endfor %}{% endcapture %}
 
-      window.onload = function onload() {
-        var resize = function resize() {
-          sd.style.marginTop = (window.innerHeight - sd.getBBox().height) / (2 * 1.618) + 'px';
-        };
+<section id="latest"{% if has_post != "true" %} class="verbose"{% endif %}>
+  <header>
+    <h1>Latest</h1>
+  </header>
 
-        sd = document.getElementById('sd');
-        sd.style.visibility = 'visible';
-        sd.style.opacity = 1;
+  <ul>
+  {% for post in site.posts limit:1 %}
+    <li id="blogpost">
+      <div class="section">
+        Blogpost
+      </div>
+      <div class="content">
+        <a href="{{ post.url }}" target="_blank" title="{{ post.title }}">{{ post.title }}</a>
+      </div>
+    </li>
+  {% endfor %}
 
-        resize();
+    <li id="commit">
+      <div class="section">
+        Commit
+      </div>
+      <div class="content">
+        <div class="project"></div>
+        <div class="commit"></div>
+      </div>
+    </li>
+  </ul>
+</section>
 
-        window.onresize = resize;
-      };
-    </script>
+<section id="links">
+  <header>
+    <h1>Links</h1>
+  </header>
 
-  </head>
-  <body>
+  <nav>
+    <ul>
+      {% if has_post == "true" %}
+      <li id="blog">
+        <div class="section">
+          Blog
+        </div>
+        <div class="content">
+          <a href="/i" title="Blog" target="_blank">stojan dimitrovski/i</a>
+        </div>
+      </li>
+      {% endif %}
 
-    <svg
-      id="sd"
-      xmlns:dc="http://purl.org/dc/elements/1.1/"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1">
-      <defs
-         id="defs4">
-        <linearGradient
-           id="linearGradient3829">
-          <stop
-             id="stop3831"
-             style="stop-color:#000000;stop-opacity:0"
-             offset="0" />
-          <stop
-             id="stop3837"
-             style="stop-color:#080808;stop-opacity:0.05785124"
-             offset="0.46435371" />
-          <stop
-             id="stop3833"
-             style="stop-color:#7c7c7c;stop-opacity:0.11570248"
-             offset="1" />
-        </linearGradient>
-        <linearGradient
-           id="linearGradient3821">
-          <stop
-             id="stop3823"
-             style="stop-color:#1a1a1a;stop-opacity:1"
-             offset="0" />
-          <stop
-             id="stop3825"
-             style="stop-color:#1a1a1a;stop-opacity:0"
-             offset="1" />
-        </linearGradient>
-        <radialGradient
-           cx="342.01233"
-           cy="626.25592"
-           r="145.37425"
-           fx="342.01233"
-           fy="626.25592"
-           id="radialGradient3835"
-           xlink:href="#linearGradient3829"
-           gradientUnits="userSpaceOnUse"
-           gradientTransform="matrix(1,0,0,0.99967701,0,0.20227581)" />
-      </defs>
-      <g
-         transform="translate(-239.05087,-393.18679)"
-         id="layer1">
-        <path
-           d="m 292,726.36218 140.10242,-16.30949 -151.17564,9.9581 141.04833,-0.23272 -151.32538,-7.33953 140.15547,15.8471 -149.50235,-24.54149 137.43546,31.72032 -145.73034,-41.4235 132.92378,47.18003 -140.05851,-57.7655 126.67924,62.02466 -132.5608,-73.35444 118.78322,76.06072 -123.33496,-87.98709 109.3387,89.1052 -112.50126,-101.47269 98.46877,100.98806 -100.20093,-113.63544 86.31516,111.55439 -86.59433,-124.31678 73.03629,120.66643 -71.85884,-133.37746 58.80528,128.2054 -56.18656,-140.69935 43.80766,134.07302 -39.7818,-146.18703 28.23893,138.1928 -22.85843,-149.76893 12.30208,140.51102 -5.63706,-151.39836 -3.79517,140.99746 11.6578,-151.05408 -19.84292,139.64578 28.80067,-148.74058 -35.632,136.47362 45.56809,-144.48802 -50.95656,131.5223 61.74146,-138.35184 -65.61683,124.85639 77.10994,-130.41203 -79.42168,116.56279 91.47316,-120.77209 -92.19114,106.74961 104.6439,-109.55772 -103.75875,95.5448 116.45044,-96.91509 -113.97371,83.0944 126.73887,-83.00902 -122.70285,69.56075 135.37507,-68.0208 -129.83237,55.12026 142.24645,-52.14583 -135.26932,39.9612 147.26342,-35.59106 -138.94283,24.28118 150.36059,-18.5723 -140.80501,8.28462 151.49759,-1.31142 -140.83159,-7.81995 150.65958,15.96655 -139.0222,-23.82256 147.85749,33.03637 -135.40045,-39.51462 143.12785,49.67552 -130.01354,-54.69154 136.53232,65.66706 -122.93171,-69.15547 128.15688,80.80254 -114.24728,-82.71786 118.11073,94.88463 -104.07346,-95.20189 106.52482,107.72976 -92.54289,-106.44482 93.5502,119.17046 -79.80588,-116.30008 79.35601,129.0576 -66.02847,-124.63919 64.12728,137.26227 -51.39028,-131.35344 48.06257,143.67752 -36.08215,-136.35529 31.37128,148.2197 -20.30362,-139.57954 14.27102,150.82963 -4.2604,-140.98417 -3.01529,151.47325 11.83835,-140.55084 -20.26228,150.14219 27.78278,-138.28522 -37.24513,146.8538 43.36501,-134.21685 -53.74243,141.65095 58.38191,-128.39875 -69.53911,134.60145 72.63772,-120.90678 -84.42924,125.79723 85.94657,-111.8386 -98.21871,115.35303 98.13499,-101.31243 -110.72775,103.40505 109.04407,-89.46551 -121.79329,90.10901 118.5316,-76.45226 -131.27106,75.63827 126.47387,-62.44234 -139.03752,60.18146 132.76738,-47.61839 -144.9914,43.94011 137.33005,-32.17366 z"
-           transform="translate(30.022444,-100.2749)"
-           id="path3043"
-           style="fill:url(#radialGradient3835);fill-opacity:1;stroke:none" />
-        <g
-           transform="translate(1,1.4648438e-5)"
-           id="g3862">
-          <g
-             id="text3015"
-             style="font-size:80px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#1b1b1b;fill-opacity:1;stroke:none;font-family:Fairview;-inkscape-font-specification:Fairview">
-            <path
-               d="m 335.31253,553.02108 c 3.19999,0 5.68,-2.56001 5.68,-5.68 l 0,-9.52 c 0,0 0.08,-1.76001 -1.04,-3.68 l -11.68,-20.16 0,-9.76 6.88,0 0,8.24 5.84,0 0,-7.44 c 0,-3.12 -2.48001,-5.68 -5.68,-5.68 l -7.2,0 c -3.12,0 -5.68,2.56 -5.68,5.68 l 0,8.4 c 0,0 0,1.92 1.12,3.76 l 11.6,20.16 0,10.8 -6.88,0 0,-8.24 -5.84,0 0,7.44 c 0,3.11999 2.56,5.68 5.68,5.68 l 7.2,0"
-               id="path3893"
-               style="line-height:125%;fill:#1b1b1b;font-family:Fairview;-inkscape-font-specification:Fairview" />
-            <path
-               d="m 360.43003,552.54108 c 3.11999,0 5.68,-2.56001 5.68,-5.68 l 0,-41.36 c 0,-3.12 -2.56001,-5.68 -5.68,-5.68 l -13.76,0 0,52.72 13.76,0 m -0.16,-4.88 -7.76,0 0,-42.96 7.76,0 0,42.96"
-               id="path3895"
-               style="line-height:125%;fill:#1b1b1b;font-family:Fairview;-inkscape-font-specification:Fairview" />
-          </g>
-          <g
-             transform="scale(-1,1)"
-             id="text3019"
-             style="font-size:80px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#131313;fill-opacity:1;stroke:none;font-family:Fairview;-inkscape-font-specification:Fairview">
-            <path
-               d="m -406.78195,553.02108 c 3.19999,0 5.68,-2.56001 5.68,-5.68 l 0,-9.52 c 0,0 0.08,-1.76001 -1.04,-3.68 l -11.68,-20.16 0,-9.76 6.88,0 0,8.24 5.84,0 0,-7.44 c 0,-3.12 -2.48001,-5.68 -5.68,-5.68 l -7.2,0 c -3.12,0 -5.68,2.56 -5.68,5.68 l 0,8.4 c 0,0 0,1.92 1.12,3.76 l 11.6,20.16 0,10.8 -6.88,0 0,-8.24 -5.84,0 0,7.44 c 0,3.11999 2.56,5.68 5.68,5.68 l 7.2,0"
-               id="path3888"
-               style="line-height:125%;fill:#131313;font-family:Fairview;-inkscape-font-specification:Fairview" />
-            <path
-               d="m -381.66445,552.54108 c 3.11999,0 5.68,-2.56001 5.68,-5.68 l 0,-41.36 c 0,-3.12 -2.56001,-5.68 -5.68,-5.68 l -13.76,0 0,52.72 13.76,0 m -0.16,-4.88 -7.76,0 0,-42.96 7.76,0 0,42.96"
-               id="path3890"
-               style="line-height:125%;fill:#131313;font-family:Fairview;-inkscape-font-specification:Fairview" />
-          </g>
-        </g>
-      </g>
-    </svg>
+      <li id="twitter">
+        <div class="section">
+          Twitter
+        </div>
+        <div class="content">
+          <a href="https://twitter.com/stndim" title="Twitter" target="_blank">@stndim</a>
+        </div>
+      </li>
 
-  </body>
-</html>
+      <li id="github">
+        <div class="section">
+          GitHub
+        </div>
+        <div class="content">
+          <a href="https://github.com/hf" title="GitHub" target="_blank">hf.git</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<section id="contact">
+  <header>
+    <h1>Contact</h1>
+  </header>
+
+  <p>I live in Skopje, Republic of Macedonia.</p>
+
+  <ul>
+    <li id="email">
+      <div class="section">
+        Email
+      </div>
+      <div class="content">
+      </div>
+    </li>
+
+    <li id="skype">
+      <div class="section">
+        Skype
+      </div>
+      <div class="content">
+        stojan.dimitrovski
+      </div>
+    </li>
+  </ul>
+</section>
+
+{% include github_events.html %}
+{% include email.html %}
+
+<script type="text/javascript">
+  placeEmail("#email .content");
+</script>

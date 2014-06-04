@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  window.placeEmail = function placeEmail(selector) {
+    setTimeout(function() {
+        var m = [ 112,91,62,24,229,193,241,155,353,331,338,309,269,484,476,422,414,609,590,516,518,531,762,721,697,732,876,835,804 ];
+
+      for (var i = 0; i < m.length; i++) {
+        m[i] = String.fromCharCode(((i + 1) * m.length) ^ m[i]);
+      };
+
+      m = m.join('');
+
+      $selector = $(selector);
+
+      $selector.css({ opacity: 1 });
+      $selector.html('<a href="' + m + '" target="_blank">' + m.split(':')[1] + '</a>');
+    }, 100 * Math.random());
+  };
+</script>

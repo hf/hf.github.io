@@ -1,0 +1,170 @@
+@import "common";
+
+$background-color: #fff;
+$base-color: #16191a;
+$light-color: #959595;
+$accent-color: #169a1d;
+
+html {
+  color: $base-color;
+  background: $background-color;
+}
+
+a {
+  color: $accent-color;
+}
+
+code {
+  color: $light-color;
+}
+
+.meta {
+  font-size: $small-em;
+  color: $light-color;
+}
+
+header.i {
+  margin: 1em 0;
+
+  font-size: $small-em;
+  word-spacing: -0.2em;
+
+  h1 {
+    @include regular-text;
+
+    color: $light-color;
+    text-transform: lowercase;
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+header.i, footer.i, #posts {
+  a {
+    color: inherit;
+  }
+
+  a:hover {
+    color: $accent-color;
+  }
+}
+
+footer.i {
+  margin: 3em 0;
+
+  font-size: $small-em;
+  color: $light-color;
+
+  #links {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+    li {
+      display: inline-block;
+      margin: 0 0.5em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+#posts {
+  margin: 3em 0;
+
+  h1 {
+    @include regular-text;
+
+    font-size: $small-em;
+    color: $light-color;
+  }
+
+  h1:before, h1:after {
+    content: "—";
+  }
+
+  h1:before {
+    padding-right: 0.5em;
+  }
+
+  h1:after {
+    padding-left: 0.5em;
+  }
+
+  .meta {
+    ul {
+      list-style: none;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+
+      li {
+        display: inline-block;
+        margin: 0 0.5em;
+      }
+
+      li:first-child {
+        margin-left: 0;
+      }
+
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.posts {
+  list-style: none;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+
+  li {
+    margin: 1em 0;
+
+    div {
+      margin: 1em 0;
+    }
+  }
+
+  .title {
+    @include strong-text;
+    text-transform: uppercase;
+
+    a, a:hover {
+      color: inherit;
+    }
+  }
+}
+
+#post {
+  margin: 3em 0;
+
+  .content {
+    img, iframe, div, blockquote, figure {
+      width: $sub-width;
+      margin: 2em auto;
+      display: block;
+    }
+
+    iframe[src *= "youtube"] {
+      height: $sub-width / (16.0 / 9.0);
+    }
+
+    figcaption {
+      color: $light-color;
+      margin: 1em 0;
+    }
+
+    .lineno {
+      padding-right: 1em;
+    }
+  }
+}

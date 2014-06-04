@@ -1,0 +1,135 @@
+@import "common";
+
+$background-color: #050709;
+$base-color: #e6e6e6;
+$light-color: #808080;
+$accent-color: #ccff00;
+
+html {
+  color: $base-color;
+  background: $background-color;
+}
+
+a {
+  color: $accent-color;
+}
+
+header#main {
+  margin: 1em 0;
+
+  font-size: $small-em;
+  word-spacing: -0.2em;
+
+  h1 {
+    @include regular-text;
+
+    color: $light-color;
+    text-transform: lowercase;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+#about {
+  margin-bottom: 3em;
+}
+
+#commit {
+  display: none;
+  opacity: 0;
+
+  @include transition(opacity 0.3s ease-in-out);
+}
+
+#email .content {
+  opacity: 0;
+
+  @include transition(opacity 0.1s ease-in-out);
+}
+
+section {
+  h1 {
+    @include regular-text;
+
+    font-size: $small-em;
+    color: $light-color;
+
+    &:before, &:after {
+      content: "—";
+    }
+
+    &:before {
+      margin-right: 0.5em;
+    }
+
+    &:after {
+      margin-left: 0.5em;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+    li {
+      margin: 1em 0;
+
+      display: block;
+
+      @include clearfix;
+    }
+
+    .section {
+      text-transform: uppercase;
+      font-size: $small-em;
+      color: $light-color;
+
+      width: 22%;
+      float: left;
+    }
+
+    .content {
+      width: 76%;
+      float: right;
+
+      @include ellipsis;
+
+      .commit {
+        width: 100%;
+        color: $light-color;
+
+        @include ellipsis;
+      }
+    }
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+footer {
+  margin: 3em 0;
+
+  font-size: $small-em;
+  color: $light-color;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

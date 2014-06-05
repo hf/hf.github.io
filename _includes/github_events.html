@@ -38,7 +38,7 @@
       , loadGHE = function() {
         $.ajax({
           jsonp: 'githubEvents',
-          url: 'https://api.github.com/users/hf/events/public?callback=githubEvents',
+          url: 'https://api.github.com/users/hf/events/public?access_token=ede95c9485868e7fde9049a6fec029fbce80bc40&callback=githubEvents',
           async: true
         });
       };

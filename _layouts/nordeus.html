@@ -52,7 +52,6 @@
       images.on('load', function() {
         if (++loaded >= images.length) {
           var trigger = function() {
-            console.log(Date.now() - time);
             $(project).trigger('section-loaded');
           };
 

@@ -44,13 +44,29 @@
 
     sections.each(function(index, project) {
       var loaded = 0
+        , loading = true
         , images = $(project).find('figure img')
         , time = Date.now();
 
-      $(project).append("<div class='wait'><div class='spinner'></div>Please wait while the images load.");
+      $(project).append("<div class='wait'><div class='spinner'></div>Please wait while the images load.<br><span class='progress'>...</span></div>");
+
+      var progress = $(project).find('.progress');
+
+      var timeout = setTimeout(function() {
+        loading = false;
+        $(project).trigger('section-loaded');
+      }, 8000);
 
       images.on('load', function() {
-        if (++loaded >= images.length) {
+        if (!loading) return;
+
+        loaded++;
+
+        progress.html(Math.round((loaded / images.length) * 100) + "%");
+
+        if (loaded >= images.length) {
+          clearTimeout(timeout);
+
           var trigger = function() {
             $(project).trigger('section-loaded');
           };

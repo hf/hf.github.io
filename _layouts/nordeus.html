@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{ page.title }}</title>
+
+  <meta name="viewport" content="width=620">
+  <meta name="description" content="{{ page.description | strip_html }}">
+
+  <meta property="og:type" content="{{ page.og_type }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | strip.html }}">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | strip_html }}">
+  <meta name="twitter:creator" content="{{ site.author.twitter }}">
+
+  {% if page.image == nil %}
+  <meta property="og:image" content="{{ site.url }}/assets/img/twitter-summary-card.png">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/twitter-summary-card.png">
+  {% else %}
+  <meta property="og:image" content="{{ page.image }}">
+  <meta name="twitter:image" content="{{ page.image }}">
+  {% endif %}
+
+  <link rel="author" href="{{ site.author.gplus }}">
+
+  <link rel="stylesheet" href="/assets/css/nordeus.css">
+
+  {% include scripts.html %}
+
+  <script type="text/javascript">
+  WebFont.load({
+    custom: {
+      families: ['ClearSans Light', 'ClearSans Medium'],
+      urls: [ '/assets/clear-sans/stylesheet.css' ]
+    }
+  });
+
+  $(function() {
+    var sections = $('#projects section');
+
+    sections.each(function(index, project) {
+      var loaded = 0
+        , images = $(project).find('figure img')
+        , time = Date.now();
+
+      $(project).append("<div class='wait'><div class='spinner'></div>Please wait while the images load.");
+
+      images.on('load', function() {
+        if (++loaded >= images.length) {
+          var trigger = function() {
+            console.log(Date.now() - time);
+            $(project).trigger('section-loaded');
+          };
+
+          if (Date.now() - time < 1000) {
+            setTimeout(trigger, 1000 - (Date.now() - time));
+          } else {
+            trigger();
+          }
+        }
+      });
+    });
+
+    sections.on('section-loaded', function(event) {
+      var section = $(event.target);
+
+      section.addClass('loaded');
+    });
+  });
+  </script>
+</head>
+<body>
+  <header id="main">
+    {% include jp.svg %}
+
+    <h1><a href="/" target="_blank">Stojan Dimitrovski</a></h1>
+    <h2>Portfolio</h2>
+  </header>
+
+  <div id="content">
+    {{ content }}
+  </div>
+
+  <footer>
+    Made with &lt;3 for <a href="http://nordeus.com" target="_blank">Nordeus</a>. Hosted on <a href="https://github.com/hf/hf.github.io" target="_blank">GitHub</a>.
+  </footer>
+
+{% include ga.html %}
+</body>
+</html>

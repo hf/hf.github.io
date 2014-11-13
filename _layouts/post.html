@@ -16,4 +16,6 @@ og_type: article
       <span class="verbose">Published on: </span><time datetime="{{ page.date | date_to_xml_schema }}">{{ page.date | date_to_string }}</time>
     </p>
   </div>
+
+  {% include disqus.html %}
 </article>

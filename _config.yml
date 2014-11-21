@@ -11,7 +11,8 @@ encoding: utf-8
 permalink: /i/:categories/:i_day/:i_month/:year/:title
 
 author:
-  twitter: stndim
+  twitter: stojanman
+  github:  hf
   gplus: https://plus.google.com/116831509108871035346
 
-url: http://hf.github.io
+url: http://stojan.me

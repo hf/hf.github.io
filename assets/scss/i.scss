@@ -148,8 +148,10 @@ footer.i {
   margin: 3em 0;
 
   .content {
+    line-height: 1.4em;
+
     img, iframe, div, blockquote, figure {
-      width: $sub-width;
+      max-width: $sub-width;
       margin: 2em auto;
       display: block;
     }

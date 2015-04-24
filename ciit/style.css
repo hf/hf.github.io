@@ -1,0 +1,68 @@
+/* Copyright (C) 2014 Mario Ampov, Stojan Dimitrovski, Andrej Kolarovski. All rights reserved. */
+
+@import './assets/pure/0.4.2/pure.css';
+@import './assets/font-awesome-4.1.0/css/font-awesome.css';
+@import './assets/pt-sans/ptsans_bold/stylesheet.css';
+@import './assets/pt-sans/ptsans_bolditalic/stylesheet.css';
+@import './assets/pt-sans/ptsans_italic/stylesheet.css';
+@import './assets/pt-sans/ptsans_regular/stylesheet.css';
+@import './assets/pt-mono/pt-mono.css';
+@import './assets/codemirror/codemirror.css';
+@import './theme.css';
+
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"],
+.pure-g-r [class *= "pure-u"] {
+  font-family: "PT Sans", arial, sans-serif;
+}
+
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.l-box {
+  padding: .7em;
+}
+
+body {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.CodeMirror {
+  width: 100%;
+  font-family: "PT Mono", "Consolas", "Monaco", "Menlo", monospace;
+  line-height: 1.6em;
+  letter-spacing: 0px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+#error {
+  margin-top: 1em;
+}
+
+#line-error, #line-error:visited {
+  color: red;
+}
+
+.token {
+  font-family: "PT Mono", "Consolas", "Monaco", "Menlo", monospace;
+  color: #101010;
+  font-size: 0.8em;
+}
+
+.button-small {
+  font-size: 10%;
+}
+
+#simulation {
+  width: 100%;
+}
+
+footer {
+  font-size: 0.8em;
+}

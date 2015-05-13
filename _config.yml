@@ -1,5 +1,5 @@
 name: Stojan Dimitrovski
-markdown: redcarpet
+markdown: kramdown
 pygments: true
 
 exclude:
@@ -16,3 +16,6 @@ author:
   gplus: https://plus.google.com/116831509108871035346
 
 url: http://stojan.me
+
+kramdown:
+  smart_quotes: lsquo,rsquo,ldquo,rdquo

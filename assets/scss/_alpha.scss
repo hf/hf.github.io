@@ -1,0 +1,21 @@
+$base-em: 20px;
+$small-em: 0.8em;
+
+$width: 540px;
+$sub-width: 500px;
+
+@mixin regular-text {
+  font-family: "ClearSans Light", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+
+@mixin strong-text {
+  font-family: "ClearSans Medium", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1em;
+}
+
+@mixin monospaced-text {
+  font-family: "Inconsolata", "Consolas", "Menlo", "Monaco", monospace;
+  line-height: 1.3em;
+}

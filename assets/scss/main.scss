@@ -1,9 +1,5 @@
 @import "common";
-
-$background-color: #050709;
-$base-color: #e6e6e6;
-$light-color: #808080;
-$accent-color: #ccff00;
+@import "dark";
 
 html {
   color: $base-color;
@@ -53,7 +49,7 @@ header#main {
   @include transition(opacity 0.1s ease-in-out);
 }
 
-section {
+section.quick {
   h1 {
     @include regular-text;
 
@@ -84,6 +80,11 @@ section {
       display: block;
 
       @include clearfix;
+    }
+
+    .separator {
+      margin: 1.5em auto;
+      width: 100%;
     }
 
     .section {

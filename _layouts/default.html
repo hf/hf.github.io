@@ -29,6 +29,12 @@
 
   <link rel="stylesheet" href="/assets/css/main.css">
 
+  {% if page.stylesheets != nil %}
+    {% for style in page.stylesheets %}
+      <link rel="stylesheet" href="{{ style }}">
+    {% endfor %}
+  {% endif %}
+
   {% include scripts.html %}
 
   <script type="text/javascript">
@@ -51,6 +57,13 @@
 
   <footer>
     Made with &lt;3. Hosted on <a href="https://github.com/hf/hf.github.io" target="_blank">GitHub</a>.
+
+    <ul class="links">
+      <li><a href="/" target="_blank" title="Stojan Dimitrovski">sd</a></li>
+      <li><a href="/i">sd/i</a></li>
+      <li><a href="https://github.com/{{ site.author.github }}" target="_blank" title="GitHub">{{ site.author.github }}.git</a></li>
+      <li><a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" title="Twitter">@{{ site.author.twitter }}</a></li>
+    </ul>
   </footer>
 
 {% include ga.html %}

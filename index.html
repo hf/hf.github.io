@@ -5,7 +5,7 @@ og_type: website
 description: Stojan Dimitrovski is a software developer and designer from Macedonia.
 ---
 
-<section id="about">
+<section id="about" class="quick">
   <header class="verbose">
     <h1>About Me</h1>
   </header>
@@ -15,7 +15,7 @@ description: Stojan Dimitrovski is a software developer and designer from Macedo
 
 {% capture has_post %}{% for post in site.posts limit:1 %}true{% endfor %}{% endcapture %}
 
-<section id="latest"{% if has_post != "true" %} class="verbose"{% endif %}>
+<section id="latest" class="quick{% if has_post != "true" %} verbose{% endif %}">
   <header>
     <h1>Latest</h1>
   </header>
@@ -44,13 +44,22 @@ description: Stojan Dimitrovski is a software developer and designer from Macedo
   </ul>
 </section>
 
-<section id="links">
+<section id="links" class="quick">
   <header>
     <h1>Links</h1>
   </header>
 
   <nav>
     <ul>
+      <li id="github">
+        <div class="section">
+          GitHub
+        </div>
+        <div class="content">
+          <a href="https://github.com/{{ site.author.github }}" title="GitHub" target="_blank">{{ site.author.github }}.git</a>
+        </div>
+      </li>
+
       {% if has_post == "true" %}
       <li id="blog">
         <div class="section">
@@ -71,19 +80,20 @@ description: Stojan Dimitrovski is a software developer and designer from Macedo
         </div>
       </li>
 
-      <li id="github">
-        <div class="section">
-          GitHub
-        </div>
+      <div class="separator">
+      </div>
+
+      <li id="of-interest">
+        <div class="section">Of Interest</div>
         <div class="content">
-          <a href="https://github.com/{{ site.author.github }}" title="GitHub" target="_blank">{{ site.author.github }}.git</a>
+          <a href="/reading-list" target="_blank">Reading List</a>
         </div>
       </li>
     </ul>
   </nav>
 </section>
 
-<section id="contact">
+<section id="contact" class="quick">
   <header>
     <h1>Contact</h1>
   </header>

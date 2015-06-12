@@ -52,29 +52,7 @@ header.i, footer.i, #posts {
 }
 
 footer.i {
-  margin: 3em 0;
-
-  font-size: $small-em;
   color: $light-color;
-
-  #links {
-    list-style: none;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-
-    li {
-      display: inline-block;
-      margin: 0 0.5em;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
 }
 
 #posts {

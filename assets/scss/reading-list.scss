@@ -1,0 +1,30 @@
+@import "dark";
+
+#reading-list {
+  margin: 3em auto;
+}
+
+ul {
+  margin: 2em auto 2em auto;
+  padding: 0 0 0 0;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  li {
+    display: block;
+    margin: 1em auto;
+    padding: 0 0 0 0;
+  }
+
+  .author {
+    font-size: $small-em;
+    color: $light-color;
+  }
+}
+

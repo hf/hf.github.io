@@ -6,6 +6,16 @@ exclude:
   - assets/scss
   - graphics
 
+assets:
+  main:
+    v: ?v1
+  zepto:
+    v: ?v1.1.3
+  i:
+    v: ?v1
+  syntax:
+    v: ?v1
+
 encoding: utf-8
 
 permalink: /i/:categories/:i_day/:i_month/:year/:title

@@ -146,5 +146,12 @@ footer.i {
     .lineno {
       padding-right: 1em;
     }
+
+    pre {
+      position: absolute; /* will be changed to relative by JS */
+      opacity: 0;
+      font-size: 0.9em;
+      overflow: visible;
+    }
   }
 }

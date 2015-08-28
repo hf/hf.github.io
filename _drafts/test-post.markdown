@@ -38,3 +38,9 @@ Also, videos:
 <iframe src="//player.vimeo.com/video/96514925?badge=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/96514925">Memory</a> from <a href="http://vimeo.com/marciniak">marciniak</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/HIG7PVa8SS8" frameborder="0" allowfullscreen></iframe>
+
+Overflowing code segments are propely aligned outside the margins.
+
+{% highlight java linenos %}
+import a.really.long.package.name.that.just.sucks.and.overflows.and.looks.bad
+{% endhighlight %}

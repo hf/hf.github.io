@@ -1,5 +1,5 @@
 #!/bin/bash
 
-scss --update -C --style compressed assets/scss:assets/css
+bundle exec scss --update -C --style compressed assets/scss:assets/css
 
-jekyll serve $@
+bundle exec jekyll serve $@

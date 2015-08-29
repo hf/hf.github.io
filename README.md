@@ -7,6 +7,8 @@ This is the personal website and blog hosted on
 Copyright & License
 -------------------
 
+Views presented in the content contained herein are my own and not my employer's.
+
 Clear Sans is a typeface by [Intel® Open Source Technology
 Center](https://01.org/clear-sans), of which an optimized version can be found
 in `assets/clear-sans`. Clear Sans is licensed under the [Apache License,

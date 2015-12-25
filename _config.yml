@@ -28,4 +28,5 @@ author:
 url: http://stojan.me
 
 kramdown:
+  input: GFM
   smart_quotes: lsquo,rsquo,ldquo,rdquo

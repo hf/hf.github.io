@@ -43,88 +43,92 @@ RxAndroid is an extension over RxJava that simply just adds a Scheduler that is 
 
 But, here's a simple example:
 
-```java
+{% highlight java %}
 interface CookieFactory {
-     /** Makes cookies for consumption. */
-     Observable<Cookie> cookies();
+  /** Makes cookies for consumption. */
+  Observable<Cookie> cookies();
 }
-                      
+        
 cookieFactory.cookies().forEach(/* onNext */ new Action1<>() {
-     @Override
-     public void call(Cookie cookie) {
-         eat(cookie);
-     }
+  @Override
+  public void call(Cookie cookie) {
+    eat(cookie);
+  }
 }, /* onError */ new Action1<>() {
-     @Override
-     public void call(Throwable throwable) {
-         call(911);
-     }
+  @Override
+  public void call(Throwable throwable) {
+    call(911);
+  }
 }, /* onCompleted */ new Action0() {
-     @Override
-     public void call() {
-         cry();
-     }
+  @Override
+  public void call() {
+    cry();
+  }
 });
-```
+{% endhighlight %}
 
 What you can see from the example is that the CookieFactory exposes an observable process that produces Cookies. Great. Now, we can "watch" over this process and: eat the cookies (`onNext`) when they arrive, call 911 (`onError`) when the factory breaks down, and be sad when the factory stops making cookies (`onCompleted`). These are the three ways in which a process can be observed.
 
 You can think of this `forEach` example as a simple "iteration" over the cookie making. But we can do other cool things. Like:
 
-```java
+{% highlight java %}
 /** Makes boxes of cookies. */
 Observable<DeliciousBox> boxesOfCookies() {
-     return cookies().buffer(10).map(new Func1<...>() {
-         @Override
-         public DeliciousBox call(List<Cookie> cookies) {
-              return package(cookies);
-         }
-     };
+  return cookies().buffer(10).map(new Func1<...>() {
+    @Override
+    public DeliciousBox call(List<Cookie> cookies) {
+     return package(cookies);
+    }
+  };
 }
-```
+{% endhighlight %}
 
 So this will create a new process, let's call it "boxes of cookies" that will take 10 cookies at a time and then package up those cookies into a DeliciousBox. Because these are two separate processes, with a slight modification we can observe them in parallel:
 
-```java
+{% highlight java %}
 Observable<DeliciousBox> boxesOfCookies() {
-     return cookies()
-            .subscribeOn(Schedulers.newThread())
-            .buffer(10)
-            .map(new Func1<...>() {
-                 @Override
-                 public DeliciousBox call(List<Cookie> cookies) {
-                      return package(cookies);
-                 }
-             };
+  return cookies()
+    .subscribeOn(Schedulers.newThread())
+    .buffer(10)
+    .map(new Func1<...>() {
+      @Override
+      public DeliciousBox call(List<Cookie> cookies) {
+        return package(cookies);
+      }
+     });
 }
-```
+{% endhighlight %}
 
 And you can sort of see where this is going. The cookies process implicitly sends messages to the boxes process. We can also change an Observable's "execution" thread by using the subscribeOn operator. The default thread in which execution happens, is the thread that creates the subscription.
 
 And so, to give an Android specific example:
 
-```java
+{% highlight java %}
 class MainAtivity extends Activity {
-  
-     Subscription friends;
+ 
+  Subscription friends;
 
-     @Override
-     public void onResume() {
-         friends = Facebook.friendsFor(user)
-              .subscribeOn(Schedulers.newThread()) // loading of friends happens on a new thread
-              .observeOn(AndroidSchedulers.mainThread()) // friends are shown on the main thread
-              .subscribe(
-                 /* onNext */      showFriend,
-                 /* onError */     showError,
-                 /* onCompleted */ yay);
-     }
+  @Override
+  public void onResume() {
+    friends = Facebook.friendsFor(user)
+     // loading of friends happens on a new thread
+     .subscribeOn(Schedulers.newThread()) 
+     // friends are shown on the main thread
+     .observeOn(AndroidSchedulers.mainThread()) 
+     .subscribe(
+      /* onNext */  showFriend,
+      /* onError */  showError,
+      /* onCompleted */ yay);
+  }
 
-     @Override
-     public void onPause() {
-         friends.unsubscribe(); // stops the process, kills the thread, disconnects HTTP request
-     }
+  @Override
+  public void onPause() {
+    // stops the process, kills the thread, disconnects 
+    // HTTP request
+    friends.unsubscribe(); 
+  }
 }
-```
+{% endhighlight %}
 
 In this pretty standard MainActivity, you want to load all of a user's Facebook friends. You want to do that `onResume` (for obvious reasons), and do it asynchronosly. So, when subscribing to the friendsFor observable, you can specify which thread the execution (think subscription) should happen on (new thread), and on what thread you want to observe the Friends, errors and completion (Android's main thread).
 
@@ -134,25 +138,25 @@ Most Android devices are multicore. You no longer have excuses to use only one c
 
 And how do you create an Observable? Simple:
 
-```java
+{% highlight java %}
 Observable.create(new Observable.OnSubscribe<Cookie>() {
-     @Override
-     public void call(Subscriber<Cookie> subscriber) {
-         // blocking is OK here
+  @Override
+  public void call(Subscriber<Cookie> subscriber) {
+    // blocking is OK here
 
-         try {
-             while (!subscriber.isSubscribed()) {
-                 // make the cookies while we have someone to eat them
-                 subscriber.onNext(makeCookie());
-             }
-
-             subscriber.onCompleted();
-         } catch (Throwable t) {
-             subscriber.onError(t);
-         }
+    try {
+     while (!subscriber.isSubscribed()) {
+      // make the cookies while we have someone to eat them
+      subscriber.onNext(makeCookie());
      }
+
+     subscriber.onCompleted();
+    } catch (Throwable t) {
+      subscriber.onError(t);
+    }
+  }
 });
-```
+{% endhighlight %}
 
 ## What you get
 
@@ -180,13 +184,5 @@ Observable.create(new Observable.OnSubscribe<Cookie>() {
 * `observeOn()` to change observation Scheduler
 
 Go wild!
-
-
-
-
-
-
-
-
 
 <script async class="speakerdeck-embed" data-slide="1" data-id="30e8368cf1504edb877fbe8281dcb545" data-ratio="1.49926793557833" src="//speakerdeck.com/assets/embed.js"></script>

@@ -1,6 +1,6 @@
 name: Stojan Dimitrovski
 markdown: kramdown
-highlighter: rogue
+highlighter: rouge
 
 exclude:
   - assets/scss

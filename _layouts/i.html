@@ -47,6 +47,10 @@
     custom: {
       families: ['ClearSans Light', 'ClearSans Medium'],
       urls: [ '/assets/clear-sans/stylesheet.css' ]
+    },
+
+    active: function() {
+      $(document).trigger("webfont-active");
     }
   });
   </script>

@@ -10,8 +10,10 @@ $(function() {
 </script>
 
 <script type="text/javascript">
-$(function() {
+var measure = function() {
   var max = 0;
+
+  var post = $("#post").width();
 
   $("#post pre").forEach(function(pre) {
     var $pre = $(pre);
@@ -36,5 +38,7 @@ $(function() {
   if (max > $(document.body).width) {
     $("meta[name=viewport]").attr({ content: ("width=" + max) });
   }
-});
+};
+
+$(document).on("webfont-active", measure);
 </script>

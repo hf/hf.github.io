@@ -1,4 +1,5 @@
 @import "common";
+@import "bourbon/bourbon";
 
 $background-color: #fff;
 $base-color: #16191a;
@@ -134,24 +135,37 @@ footer.i {
       display: block;
     }
 
+    figure img {
+      margin: 0 auto;
+      @include border-top-radius(4px);
+      @include border-bottom-radius(4px);
+      @include border-left-radius(4px);
+      @include border-right-radius(4px);
+    }
+
+    blockquote {
+      border-left: 0.5em solid $base-color;
+
+      & p {
+        margin-left: 1em;
+      }
+    }
+
     iframe[src *= "youtube"] {
       height: $sub-width / (16.0 / 9.0);
     }
 
     figcaption {
       color: $light-color;
-      margin: 1em 0;
+      margin-top: 1em;
     }
 
     .lineno {
       padding-right: 1em;
     }
+  }
 
-    pre {
-      position: absolute; /* will be changed to relative by JS */
-      opacity: 0;
-      font-size: 0.9em;
-      overflow: visible;
-    }
+  pre code {
+    font-size: $small-em;
   }
 }

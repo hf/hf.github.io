@@ -10,35 +10,5 @@ $(function() {
 </script>
 
 <script type="text/javascript">
-var measure = function() {
-  var max = 0;
-
-  var post = $("#post").width();
-
-  $("#post pre").forEach(function(pre) {
-    var $pre = $(pre);
-
-    var width = $pre.width();
-    var parent = $($pre.parent()).width();
-    var offset = (width - parent) / 2;
-
-    if (width > max) {
-      max = width;
-    }
-
-    if (offset <= 0) {
-      offset = 0;
-    } else {
-      offset = -offset;
-    }
-
-    $pre.css({ position: 'relative', opacity: 1, left: (offset + "px") });
-  });
-
-  if (max > $(document.body).width) {
-    $("meta[name=viewport]").attr({ content: ("width=" + max) });
-  }
-};
-
 $(document).on("webfont-active", measure);
 </script>

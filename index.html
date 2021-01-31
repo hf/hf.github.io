@@ -10,7 +10,7 @@ description: Stojan Dimitrovski is a software engineer from North Macedonia.
     <h1>About Me</h1>
   </header>
 
-  <p>I’m a software engineer from North Macedonia.</p>
+  <p>{{ site.tagline }}</p>
 </section>
 
 {% capture has_post %}{% for post in site.posts limit:1 %}true{% endfor %}{% endcapture %}

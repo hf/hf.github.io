@@ -20,6 +20,8 @@ encoding: utf-8
 
 permalink: /i/:categories/:i_day/:i_month/:year/:title
 
+tagline: I’m a software engineer.
+
 author:
   twitter: stojaaan
   linkedin: stojan-dimitrovski-49530024
@@ -30,3 +32,6 @@ url: http://stojan.me
 kramdown:
   input: GFM
   smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+plugins:
+  - jekyll-gist
